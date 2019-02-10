@@ -23,6 +23,37 @@ class Usuario {
 		// Render index view
 		return $container->renderer->render($response, 'config/usuario/index.html', []);
 	}
+
+	public static function find(Request $request, Response $response) {
+		
+		global $app;
+		
+		$container  = $app->getContainer();
+		$stmt	= 
+		$container
+		->pdo
+		->select([
+				 	'usuarios.id as id',
+				 	'usuarios.usuario as usuario',
+				 	'usuarios.email as email',
+				 	'usuarios.start as start',
+				 	'usuarios.update as `update`',
+				 	'usuarios.status as status'
+				 ]
+		)
+		->from('usuarios');
+		
+		$stmt	= $stmt->execute();
+		$data	= $stmt->fetch();
+
+		$dataok = [
+			'data' => [
+				'attributes' => $data
+			]
+		];
+		return $response->withJson($dataok);
+
+	}
 	
 	public static function listar(Request $request, Response $response) {
 
@@ -76,6 +107,69 @@ class Usuario {
 		];
 		return $response->withJson($dataok);
 
+	}
+
+	public static function salvar(Request $request, Response $response) {
+		
+		global $app;
+		
+		$post = $request->getParsedBody();
+		print_r($post);
+		die;
+	}
+
+	public static function editar(Request $request, Response $response) {
+		
+		global $app;
+		$container = $app->getContainer();
+		
+		$post	 = $request->getParsedBody();
+		$payload = [];
+
+		if (array_key_exists('id', $post)) {
+			$id	= $post['id'];
+		}
+
+		if (array_key_exists('usuario', $post)) {
+			$payload['usuario'] = $post['usuario'];
+		}
+
+		if (array_key_exists('email', $post)) {
+			$payload['email'] = $post['email'];
+		}
+
+		if (array_key_exists('senha', $post)) {
+			$senha = $post['senha'];
+			$senha = md5($senha);
+			$payload['senha'] = $senha;
+		}
+
+		if (array_key_exists('status', $post)) {
+			$payload['status'] = $post['status'];
+		}
+		
+		if(count($payload) > 0 AND isset($id)) {
+
+			
+			$update = $container->pdo->update($payload)
+			->table('usuarios')
+			->where('id', '=', $id);
+			
+			$affectedRows = $update->execute();
+			//print_r($affectedRows);
+			
+			
+			$dataok = [
+			'data' => 'Ok',
+			];
+			return $response->withJson($dataok);
+
+
+
+		}else{
+			$dataok = [];
+			return $response->withJson($dataok);
+		}
 	}
 
 }

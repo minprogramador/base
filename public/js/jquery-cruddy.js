@@ -121,7 +121,7 @@
       },
 
       lang: {
-        saved:        'Saved',                                  /* alert save */         
+        saved:        'Salvo',                                  /* alert save */         
         deleted:      'Deleted',                                /* alert deleted */
         confirm:      'Are you sure?',                          /* confirm delete */
         errors:       {                                         /* translate error codes to messages, new json api will be different */
