@@ -30,8 +30,9 @@ class Config {
 	
 	public static function login(Request $request, Response $response) {
 		global $app;
-			// Sample log message
+		// Sample log message
 		$container = $app->getContainer();
+
 
 		// Render index view
 		return $container->renderer->render($response, 'config/index.html', []);

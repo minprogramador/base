@@ -29,4 +29,17 @@ $container['logger'] = function ($c) {
     return $logger;
 };
 
+$container['pdo'] = function ($c) {
+	$pdo_config = $c->get('settings')['db'];
 
+	$dsn =  "mysql:host={$pdo_config['host']};".
+			"dbname={$pdo_config['dbname']};".
+			"charset=utf8";
+
+	$usr = $pdo_config['user'];
+	$pwd = $pdo_config['password'];
+
+	$pdo = new \Slim\PDO\Database($dsn, $usr, $pwd);
+
+	return $pdo;
+};

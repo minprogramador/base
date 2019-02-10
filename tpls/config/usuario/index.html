@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<title>jQuery CRUDdy</title>
+<title>Base - Usuarios</title>
 
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" rel='stylesheet' type='text/css'>
 <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
@@ -165,12 +165,11 @@ Create
 </div>
 </div>
 <div class="panel-body">
-<table class="table table-striped table-bordered table-list" data-href="https://cruddy.io/app/api/admin/user">
+<table class="table table-striped table-bordered table-list" data-href="usuarios/listar">
 <thead>
 <th><em class="fa fa-cog"></em></th>
 <th class="hidden-xs" data-col="id">ID <em class="fa fa-fw fa-sort pull-right em-sort"></th>
 <th data-col="usuario">Usuario <em class="fa fa-fw fa-sort pull-right em-sort"></em></th>
-<th data-col="token">Token <em class="fa fa-fw fa-sort pull-right em-sort"></em></th>
 <th data-col="data">Start<em class="fa fa-fw fa-sort pull-right em-sort"></em></th>
 <th data-col="data">Update<em class="fa fa-fw fa-sort pull-right em-sort"></em></th>
 <th data-col="limite">Limite<em class="fa fa-fw fa-sort pull-right em-sort"></em></th>
@@ -215,12 +214,20 @@ Create
 <script id="row-item" type="text/x-jsrender">
 <tr>
 <td align="center">
-<button type="button" class="btn btn-default" data-action="read" data-href="https://cruddy.io/app/api/admin/user/{{:id}}" data-toggle="modal" data-target="#modal-create-edit"><em class="fa fa-pencil"></em></button>
+<button type="button" class="btn btn-default" data-action="read" data-href="https://cruddy.io/app/api/admin/user/{{:id}}" data-toggle="modal" data-target="#modal-create-edit">
+	<em class="fa fa-pencil"></em>
+</button>
+
 <button type="button" class="btn btn-danger" data-action="delete" data-href="https://cruddy.io/app/api/admin/user/{{:id}}"><em class="fa fa-trash"></em></button>
 </td>
+
 <td class="hidden-xs">{{:id}}</td>
-<td>{{:attributes.name}}</td>
-<td>{{:attributes.email}}</td>
+<td>{{:usuario}}</td>
+<td>{{:start}}</td>
+<td>{{:update}}</td>
+<td>{{:limite}}</td>
+<td>{{:usado}}</td>
+<td>{{:status}}</td>
 </tr>
 </script>
 
