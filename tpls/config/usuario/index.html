@@ -18,15 +18,38 @@ body{ margin: 40px 0 200px 0}
 </style>
 </head>
 <body>
+	<nav class="navbar navbar-inverse navbar-fixed-top" style="margin-bottom:20%;">
+		<div class="container">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+					<span class="sr-only">Toggle</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="#main">Base</a>
+			</div>
+			<div id="navbar" class="navbar-collapse collapse">
+				<ul class="nav navbar-nav">
+					<li class="active"><a href="./">Inicio</a></li>
+					<li><a href="./usuarios">Usuarios</a></li>
+					<li class="dropdown">
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Config <span class="caret"></span></a>
+						<ul class="dropdown-menu">
+							<li><a href="#listcc">Listar contas</a></li>
+							<li><a href="#addcc">Adicionar conta</a></li>
+							<li><a href="#config">Config sistema</a></li>
+						</ul>
+					</li>
+					<li><a href="#sair">Sair</a></li>
+				</ul>
+			</div><!--/.nav-collapse -->
+		</div>
 
 
-<div class="container">
-<div class="jumbotron">
-<h1>Usuario<sup></sup></h1> 
-<p>Pagina usuarios</p>
-</div>
-</div>
 
+	</nav>
+<br/><br/>
 
 <div class="container container-user">
 <div class="row">
@@ -41,7 +64,7 @@ body{ margin: 40px 0 200px 0}
 {{if id}}
 Edit #{{:id}}
 {{else}}
-Create
+Adicionar
 {{/if}}
 </h4>
 </div>
@@ -50,26 +73,45 @@ Create
 <p></p>
 
 <div class="form-group row">
-<label class="col-md-4 control-label">Full Name</label>
-
-<div class="col-md-6">
-<input name="name" class="form-control" value="{{:attributes.name}}">
-<span class="help-block hide">
-<strong></strong>
-</span>                                
-</div>
+	<label class="col-md-4 control-label">Usuario:</label>
+	<div class="col-md-6">
+		<input name="usuario" class="form-control" value="{{:attributes.usuario}}">
+		<span class="help-block hide">
+			<strong></strong>
+		</span>
+	</div>
 </div>
 
 <div class="form-group row">
-<label class="col-md-4 control-label">E-Mail Address</label>
+	<label class="col-md-4 control-label">E-mail:</label>
+	<div class="col-md-6">
+		<input name="email" class="form-control" value="{{:attributes.email}}">
+		<span class="help-block hide">
+			<strong></strong>
+		</span>
+	</div>
+</div>
 
-<div class="col-md-6">
-<input name="email" class="form-control" value="{{:attributes.email}}">
-<span class="help-block hide">
-<strong></strong>
-</span>                                
+<div class="form-group row">
+	<label class="col-md-4 control-label">Senha:</label>
+	<div class="col-md-6">
+		<input name="senha" class="form-control" value="{{:attributes.senha}}">
+		<span class="help-block hide">
+			<strong></strong>
+		</span>
+	</div>
 </div>
+
+<div class="form-group row">
+	<label class="col-md-4 control-label">Status:</label>
+	<div class="col-md-6">
+		<input name="status" class="form-control" value="{{:attributes.status}}">
+		<span class="help-block hide">
+			<strong></strong>
+		</span>
+	</div>
 </div>
+
 
 </div>
 <div class="modal-footer">
@@ -93,11 +135,11 @@ Create
 
 <div class="row">
 <div class="col-sm-6 hidden-xs">
-<h1 style="margin:0">User Management</h1>
+<h2 style="margin:0">Usuarios</h2>
 </div>
 <div class="col-sm-6 col-xs-12 text-right">
 <button type="button" class="btn btn-default btn-refresh"><em class="fa fa-refresh"></em></button>
-<button type="button" class="btn btn-primary btn-create" data-toggle="modal" data-target="#modal-create-edit">Create New</button>
+<button type="button" class="btn btn-primary btn-create" data-toggle="modal" data-target="#modal-create-edit">Adicionar</button>
 </div>
 </div>
 
@@ -127,8 +169,13 @@ Create
 <thead>
 <th><em class="fa fa-cog"></em></th>
 <th class="hidden-xs" data-col="id">ID <em class="fa fa-fw fa-sort pull-right em-sort"></th>
-<th data-col="name">Name <em class="fa fa-fw fa-sort pull-right em-sort"></em></th>
-<th data-col="email">E-mail <em class="fa fa-fw fa-sort pull-right em-sort"></em></th>
+<th data-col="usuario">Usuario <em class="fa fa-fw fa-sort pull-right em-sort"></em></th>
+<th data-col="token">Token <em class="fa fa-fw fa-sort pull-right em-sort"></em></th>
+<th data-col="data">Start<em class="fa fa-fw fa-sort pull-right em-sort"></em></th>
+<th data-col="data">Update<em class="fa fa-fw fa-sort pull-right em-sort"></em></th>
+<th data-col="limite">Limite<em class="fa fa-fw fa-sort pull-right em-sort"></em></th>
+<th data-col="usado">Usado<em class="fa fa-fw fa-sort pull-right em-sort"></em></th>
+<th data-col="status">Status <em class="fa fa-fw fa-sort pull-right em-sort"></em></th>
 </thead>
 <tbody>
 <tr><td colspan="4">Loading...</td></tr>
