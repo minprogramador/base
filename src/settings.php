@@ -5,7 +5,7 @@ return [
 		'displayErrorDetails'   => true,
 		'addContentLengthHeader' => false,
 		'renderer' => [
-			'template_path' => __DIR__ . '/../templates/',
+			'template_path' => __DIR__ . '/../tpls/',
 		],
 		'logger' => [
 			'name' => 'Itouch',

@@ -10,7 +10,7 @@ class Config {
 	public static function index(Request $request, Response $response) {
 		global $app;
 		$container = $app->getContainer();
-		return $container->renderer->render($response, 'config.html', []);
+		return $container->renderer->render($response, 'config/config.html', []);
 
 //		$data = array('pagina' => 'index');
 	//	return $response->withJson($data);
@@ -34,7 +34,7 @@ class Config {
 		$container = $app->getContainer();
 
 		// Render index view
-		return $container->renderer->render($response, 'index.html', []);
+		return $container->renderer->render($response, 'config/index.html', []);
 
 
 
